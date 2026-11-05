@@ -1,0 +1,5 @@
+aiogram>=3.7
+aiohttp>=3.9
+Jinja2>=3.1
+playwright>=1.45
+python-dotenv>=1.0
