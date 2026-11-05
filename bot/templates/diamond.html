@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block css %}
+{% include "_info_css.html" %}
+.dia{left:675px;top:150px;width:440px;height:440px;transform:rotate(45deg);overflow:hidden;border:6px solid #fff;
+  background:var(--accent);box-shadow:0 18px 40px rgba(0,0,0,.18)}
+.dia .img{position:absolute;left:50%;top:50%;width:625px;height:625px;transform:translate(-50%,-50%) rotate(-45deg);
+  background:{% if poster %}url("{{ poster }}") center 22%/cover no-repeat{% else %}transparent{% endif %}}
+.dia::after{content:"";position:absolute;inset:0;background:color-mix(in srgb,var(--accent) 38%,transparent)}
+.cut{left:690px;bottom:0;height:640px;width:auto;filter:drop-shadow(0 12px 18px rgba(0,0,0,.25))}
+.sdiamond{left:1013px;top:62px;width:13px;height:13px;background:var(--accent);transform:rotate(45deg)}
+{% endblock %}
+
+{% block body %}
+{% include "_info_body.html" %}
+<div class="abs dia"><div class="img"></div></div>
+{% if cutout %}<img class="abs cut" src="{{ cutout }}">{% endif %}
+<div class="abs sdiamond"></div>
+{% endblock %}

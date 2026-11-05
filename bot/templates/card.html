@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block css %}
+.bar{left:34px;top:108px;width:13px;height:505px;border-radius:7px;background:var(--accent)}
+.vgen{left:58px;top:108px;display:flex;gap:12px}
+.vgen span{writing-mode:vertical-rl;text-orientation:upright;font-size:12px;font-weight:700;letter-spacing:5px;color:#1c1c24}
+.dots{left:122px;top:176px;width:112px;height:80px;
+  background:radial-gradient(circle,#b9b9c2 3px,transparent 3.5px) 0 0/28px 22px}
+.dots2{left:150px;top:176px;width:70px;height:80px;
+  background:radial-gradient(circle,var(--accent) 3px,transparent 3.5px) 0 0/56px 44px}
+.meta{left:150px;top:294px;font-size:17px;font-weight:700;color:#5b5b68;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.meta i{width:9px;height:9px;border-radius:50%;background:var(--accent);display:block}
+h1{left:150px;top:330px;width:660px;font-size:{{ fs_card }}px;font-weight:800;text-transform:uppercase;
+  line-height:1.12;letter-spacing:-1px;color:#8c909c}
+h1 b{color:var(--accent);font-weight:800}
+.studio{left:150px;top:405px;font-size:17px;font-weight:700;color:#23232b;text-transform:uppercase}
+.watch{left:150px;top:465px;height:51px;width:131px;border-radius:26px;background:var(--accent);color:#fff;
+  font-size:17px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.status{left:305px;top:477px;display:flex;align-items:center;gap:12px;font-size:17px;font-weight:700;
+  color:#23232b;text-transform:uppercase}
+.status:before{content:"";width:4px;height:26px;background:#06b6d4;display:block}
+.status i{width:9px;height:9px;border-radius:50%;background:#f59e0b;display:block}
+.shape1{left:832px;top:0;width:250px;height:330px;background:#dde2ee;clip-path:polygon(0 0,100% 0,62% 100%)}
+.shape2{left:1048px;top:0;width:232px;height:325px;background:var(--accent);clip-path:polygon(0 0,100% 0,100% 100%)}
+.poster{left:885px;top:88px;width:336px;height:504px;border-radius:36px;border:8px solid #fff;overflow:hidden;
+  box-shadow:0 22px 50px rgba(30,20,60,.35);
+  background:{% if poster %}#222 url("{{ poster }}") center/cover no-repeat{% else %}var(--accent){% endif %}}
+.ghost{left:290px;bottom:-34px;font-size:176px;font-weight:800;line-height:1;color:transparent;
+  -webkit-text-stroke:1.5px #efeff3;letter-spacing:-4px;white-space:nowrap}
+.foot{left:0;right:0;bottom:0;height:22px;background:var(--accent)}
+{% endblock %}
+
+{% block body %}
+<div class="abs ghost">{{ brand_up|replace(' ','') }}</div>
+<div class="abs shape1"></div><div class="abs shape2"></div>
+<div class="abs bar"></div>
+<div class="abs vgen">{% for g in genres[:2] %}<span>{{ g }}</span>{% endfor %}</div>
+<div class="abs dots"></div><div class="abs dots2"></div>
+<div class="abs meta"><i></i>{% if year %}Year {{ year }}{% endif %}{% if year and eps_long %} • {% endif %}{{ eps_long }}</div>
+<h1 class="abs">{% if t2 %}<b>{{ t1 }}</b> {{ t2 }}{% else %}<b>{{ title }}</b>{% endif %}</h1>
+{% if studio %}<div class="abs studio">{{ studio }}</div>{% endif %}
+<div class="abs watch">WATCH</div>
+<div class="abs status"><i></i>{{ status }}</div>
+<div class="abs poster"></div>
+<div class="abs foot"></div>
+{% endblock %}

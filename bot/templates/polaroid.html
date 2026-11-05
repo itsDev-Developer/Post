@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block css %}
+{% include "_info_css.html" %}
+.gd1{display:none}
+.card{background:#fff;width:340px;height:430px;padding:10px 10px 0;box-shadow:0 16px 38px rgba(0,0,0,.22)}
+.card .ph{width:320px;height:330px;background-size:cover;background-position:center 20%;background-color:var(--accent)}
+.card .lab{margin-top:14px;padding-left:12px;border-left:5px solid var(--accent);font-size:17px;font-weight:800;color:#111;
+  line-height:1.1;height:22px;display:flex;align-items:center;text-transform:uppercase}
+.card .sub{position:absolute;right:20px;bottom:16px;font-size:9px;font-weight:700;color:#8a8a96;text-align:right;
+  text-transform:uppercase;line-height:1.5}
+.card .sub::before{content:"";display:block;width:26px;height:3px;background:var(--accent);margin:0 0 3px auto;border-radius:2px}
+.card .no{position:absolute;right:20px;top:22px;background:#444;color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:5px}
+.c1{left:688px;top:-8px;transform:rotate(-8deg);z-index:1}
+.c2{left:872px;top:92px;transform:rotate(7deg);z-index:2}
+.c3{left:722px;top:258px;transform:rotate(3deg);z-index:3}
+{% endblock %}
+
+{% block body %}
+{% set navx = [105, 279, 425, 557] %}
+{% include "_info_body.html" %}
+{% set labels = [("CARD 01","SCENE"),("CARD 02","PREVIEW"),("CARD 03","MAIN PROFILE")] %}
+{% for i in range(3) %}
+<div class="abs card c{{ i + 1 }}">
+  <div class="ph" style="{% if cards|length > i and cards[i] %}background-image:url('{{ cards[i] }}'){% endif %}"></div>
+  <span class="no">0{{ i + 1 }}</span>
+  <div class="lab">{{ labels[i][0] }}</div>
+  <div class="sub">{{ brand_up }}<br>{{ labels[i][1] }}</div>
+</div>
+{% endfor %}
+{% endblock %}

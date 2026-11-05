@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block css %}
+body{background:#ececf2}
+.left{left:0;top:0;width:576px;height:720px;overflow:hidden;
+  background:{% if backdrop %}#111 url("{{ backdrop }}") center/cover no-repeat{% else %}linear-gradient(160deg,#2a1a4a,#7a1d1d){% endif %}}
+.left::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 38%,color-mix(in srgb,var(--accent) 88%,#000) 100%)}
+.promo{left:248px;bottom:46px;width:200px;z-index:2;color:#fff;font-size:8px;font-weight:700;
+  text-transform:uppercase;line-height:1.6}
+.bigbrand{left:459px;bottom:38px;z-index:2;color:#fff;font-size:22px;font-weight:800;line-height:1.1;
+  text-transform:uppercase;border-left:2px solid #fff;padding-left:14px}
+.right{left:576px;top:0;width:704px;height:720px;overflow:hidden;background:#f1f1f6}
+.right .bg{position:absolute;inset:-20px;filter:blur(3px);
+  {% if backdrop %}background:url("{{ backdrop }}") center/cover{% endif %}}
+.right .veil{position:absolute;inset:0;background:rgba(243,243,248,.82)}
+.top{left:60px;right:36px;top:38px;height:26px;display:flex;align-items:center;z-index:2}
+.logo{font-size:16px;font-weight:800;color:#3d3d48;white-space:nowrap}
+.logo b{color:var(--accent);font-weight:800}
+.tag{margin-left:82px;font-size:9.5px;font-weight:700;color:#8a8a98;letter-spacing:.1px;white-space:nowrap}
+.burger{margin-left:auto;width:26px}
+.burger i{display:block;height:4px;background:#1a1a20;border-radius:2px;margin:3.5px 0}
+.main{left:60px;right:60px;top:236px;z-index:2}
+h1{font-size:{{ fs_split }}px;font-weight:800;color:#141418;letter-spacing:-.6px;line-height:1.2;
+  padding-bottom:10px;border-bottom:2px solid rgba(20,20,40,.28)}
+.syn{margin-top:28px;width:588px;font-size:15.5px;line-height:23px;font-weight:500;color:#4b4b58;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.btns{margin-top:36px;display:flex;align-items:center;gap:16px}
+.watch{height:46px;padding:0 27px;border-radius:23px;background:#131316;color:#fff;font-size:15px;
+  font-weight:800;display:flex;align-items:center;gap:5px;text-transform:uppercase}
+.watch b{color:var(--accent);font-weight:800}
+.save{width:46px;height:46px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 3px 10px rgba(0,0,0,.08)}
+.nav{left:182px;bottom:19px;width:340px;height:56px;border-radius:28px;background:#000;z-index:3;
+  display:flex;align-items:center;justify-content:space-around;padding:0 14px}
+.nav svg{width:22px;height:22px}
+.nav .plus{width:36px;height:36px;border-radius:50%;background:var(--accent);border:2px solid #fff;
+  display:flex;align-items:center;justify-content:center}
+.nav .plus svg{width:20px;height:20px}
+{% endblock %}
+
+{% block body %}
+<div class="abs left">
+  <div class="abs promo">{{ promo }}</div>
+  <div class="abs bigbrand">{% for w in brand_lines %}{{ w }}{% if not loop.last %}<br>{% endif %}{% endfor %}</div>
+</div>
+
+<div class="abs right">
+  <div class="bg"></div><div class="veil"></div>
+  <div class="abs top">
+    <div class="logo">{{ brand_a }}{% if brand_a %} {% endif %}<b>{{ brand_b }}</b></div>
+    <div class="tag">{{ tagline }}</div>
+    <div class="burger"><i></i><i></i><i></i></div>
+  </div>
+  <div class="abs main">
+    <h1>{{ title }}</h1>
+    <p class="syn">{{ synopsis_long }}</p>
+    <div class="btns">
+      <div class="watch">WATCH <b>NOW</b></div>
+      <div class="save"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M6 2h12v20l-6-5-6 5z" fill="#141418"/></svg></div>
+    </div>
+  </div>
+  <div class="abs nav">
+    <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2.5 1.5 12H5v9h5v-6h4v6h5v-9h3.5z"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><circle cx="10" cy="10" r="6"/><path d="M15 15l6 6"/></svg>
+    <div class="plus"><svg viewBox="0 0 24 24" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M12 4v16M4 12h16"/></svg></div>
+    <svg viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="7.5" r="4.5"/><path d="M3.5 21c0-5 4-7.5 8.5-7.5s8.5 2.500 8.500 7.500z"/></svg>
+    <svg viewBox="0 0 24 24" fill="#fff"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.500 10.500l7-4M8.500 13.500l7 4" stroke="#fff" stroke-width="2"/></svg>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+<div class="abs pale p1"></div><div class="abs pale p2"></div>
+<div class="abs gdots gd1"></div><div class="abs gdots gd2"></div>
+<div class="abs ribbon"></div><div class="abs tri"></div>
+<div class="abs nav">
+  {% set nx = navx|default([105, 279, 448, 608]) %}
+  <span style="left:{{ nx[0] }}px">EPISODE</span><span class="on" style="left:{{ nx[1] }}px">HOME</span>
+  <span style="left:{{ nx[2] }}px">TRAILER</span><span style="left:{{ nx[3] }}px">DETAIL &amp; MORE</span>
+</div>
+<div class="abs brandrow"><em></em><span>{{ brand_a }}{% if brand_a %}<b>{{ brand_b }}</b>{% else %}{{ brand_b }}{% endif %}</span></div>
+<div class="abs ttl">{% if t2 %}{{ t1 }}<b>{{ t2 }}</b>{% else %}<b>{{ title }}</b>{% endif %}</div>
+<div class="abs minfo">{% set parts = [year, genre_line, eps_short, type_label] %}{% for p in parts if p %}{{ p }}{% if not loop.last %}<s>|</s>{% endif %}{% endfor %}</div>
+<div class="abs rule"></div>
+<div class="abs rdots"><i></i><i></i><i></i><i></i><i></i></div>
+<p class="abs desc">{{ synopsis }}</p>
+<div class="abs dl">DOWNLOAD NOW</div>
+<div class="abs dlsq"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M6.500 10.500 12 16l5.500-5.500M4 21h16"/></svg></div>
+<div class="abs dmd"></div>
+<div class="abs foot2">{{ brand_up }}</div>
